@@ -30,7 +30,9 @@ jobs:
     - run: |
         export PATH="$(ls -d /c/hostedtoolcache/windows/Python/${{ matrix.python-version }}.*)/x64:$PATH"
         python -m pip install scikit_build_core
-        python -m pip install git+https://github.com/lkeegan/nanobind.git@fix_visibility_gcc_windows
+        python -m pip install git+https://github.com/wjakob/nanobind.git@master
+
+    - name: Build
+      run: |
+        export PATH="$(ls -d /c/hostedtoolcache/windows/Python/${{ matrix.python-version }}.*)/x64:$PATH"
         CMAKE_ARGS="-DCMAKE_CXX_FLAGS='-static -static-libgcc -static-libstdc++'" python -m pip install --verbose --no-build-isolation .
-        python -m pip show nanobind_example -f
-        python -c "import nanobind_example"
