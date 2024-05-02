@@ -30,7 +30,7 @@ jobs:
     - run: |
         export PATH="$(ls -d /c/hostedtoolcache/windows/Python/${{ matrix.python-version }}.*)/x64:$PATH"
         python -m pip install scikit_build_core
-        python -m pip install git+https://github.com/wjakob/nanobind.git@master
+        python -m pip install git+https://github.com/lkeegan/nanobind.git@fix_visibility_gcc_windows
 
     - name: Build
       run: |
